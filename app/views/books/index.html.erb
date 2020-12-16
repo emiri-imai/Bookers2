@@ -10,10 +10,10 @@
                     </tr>
                     <hr>
                     <tr>
-                      <th><%= link_to book.title, book_path(book.id) %></th>
-                      <th><%= link_to book.body, book_path(book.id) %></th>
+                      <th><%= link_to book.title book_path(book.id) %></th>
+                      <th><%= link_to book.body book_path(book.id) %></th>
                       <% if @book.user == current_user %>
                       <%= link_to "Destroy", book_path(@book), method: :delete %>
-                      <% end %>
+                      <% end >
                     </tr>
                     <% end %>
