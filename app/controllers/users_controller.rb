@@ -1,5 +1,13 @@
 class UsersController < ApplicationController
 
+before_action :authenticate_user!
+
+def ensure_current_user
+  if current_user.id != params[:id].to_i
+    redirect_to user_path(user.id)
+  end
+end
+
   def new
     @user = User.new
   end
@@ -35,7 +43,7 @@ class UsersController < ApplicationController
     if @user == current_user
       render :edit
     else
-      redirect_to users_path
+      redirect_to user_path(current_user.id)
     end
   end
 

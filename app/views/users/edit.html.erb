@@ -4,7 +4,7 @@
       <div class="row">
         <div class="mx-auto">
           <h2>User info</h2>
-          
+
           <% if @user.errors.any? %>
             <%= @user.errors.count %>error prohibited this obj from being saved
             </br>
@@ -12,29 +12,29 @@
               <%= message %>
             <% end %>
           <% end %>
-          
+
           <%= form_with model:@user, local:true do |f| %>
           <div class="form-group">
-          <label for="user_name">Name</label>
+          <p>Name</p>
           <div>
-          <%= f.text_field :name, autofocus: true, id:"user_name", placeholder:"name" %>
+          <%= f.text_field :name, autofocus: true, id:"user_name", placeholder:"name", class: "form-control form-control-lg" %>
           </div>
           </div>
           <div class="form-group">
-          <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback:"/assets/l_e_others_500.png" %>
-          <label for="inputImage">Image</label>
+          <%= attachment_image_tag @user, :profile_image,fallback:"l_e_others_500.png",size: "60x60" %>
+          <p>Image</p>
           <div>
           <%= f.attachment_field :profile_image, placeholder: "image" %>
           </div>
           </div>
           <div class="form-group">
-            <label for="introduction">Introduction</label>
+            <p>Introduction</p>
             <div>
-            <%= f.text_area :introduction, autofocus: true, id:"introduction", placeholder:"introduction" %>
+            <%= f.text_area :introduction, autofocus: true, id:"introduction", placeholder:"introduction", class: "form-control form-control-lg" %>
             </div>
             </div>
             <div class="form-group">
-          <%= f.submit "Update user" %>
+          <%= f.submit "Update User",class: 'btn btn-secondary' %>
           </div>
           <% end %>
       </div>
